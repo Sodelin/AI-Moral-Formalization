@@ -1,4 +1,4 @@
-name = "ai-moral-formalization"
+name = "ai_moral_formalization"
 version = "0.1.0"
 defaultTargets = ["AIMoral"]
 
