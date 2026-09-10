@@ -1,0 +1,12 @@
+import AIMoral
+
+#print axioms AIMoral.ExcludedStakeholder.pact_strict_nash
+#print axioms AIMoral.ExcludedStakeholder.baseline_strict_nash
+#print axioms AIMoral.ExcludedStakeholder.pact_agent_pareto_efficient
+#print axioms AIMoral.ExcludedStakeholder.pact_dominates_baseline_for_agents
+#print axioms AIMoral.ExcludedStakeholder.pact_harms_outsider
+#print axioms AIMoral.ExcludedStakeholder.baseline_satisfies_chosen_rule
+#print axioms AIMoral.ExcludedStakeholder.baseline_and_pact_stakeholder_incomparable
+#print axioms AIMoral.ExcludedStakeholder.pact_still_stakeholder_pareto_efficient
+#print axioms AIMoral.ExcludedStakeholder.cooperation_properties_do_not_entail_no_harm
+#print axioms AIMoral.ExcludedStakeholder.chosen_rule_selects_baseline

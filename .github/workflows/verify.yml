@@ -1,0 +1,41 @@
+name: Verify formalization
+
+on:
+  push:
+    branches: [main, research/cooperation-and-stakeholder-safety]
+    paths:
+      - 'AIMoral/**'
+      - 'AIMoral.lean'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - 'lean-toolchain'
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/verify.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Build Lean proofs with warnings treated as errors
+        uses: leanprover/lean-action@50fcf42d2e460296f1a34b402e990d1b24f8b596
+        with:
+          auto-config: 'false'
+          build: 'true'
+          build-args: '--wfail'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'false'
+      - name: Print theorem axiom dependencies
+        run: lake env lean scripts/Audit.lean
+      - name: Check finite game and contrast cases
+        run: |
+          python3 scripts/check_game.py
+          python3 -m unittest discover -s tests -v

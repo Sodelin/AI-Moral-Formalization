@@ -31,3 +31,29 @@ philosophy, or an open game-theory problem is claimed.
 - Keep raw third-party video transcripts and transient metadata out of this repository.
 
 Initial research and implementation are AI-assisted and require human review.
+
+## Initial research package
+
+- [Investigation and contribution plan](docs/investigation.md): video/site findings, scope, and next steps.
+- [Video analysis](docs/video-analysis.md): original-caption provenance and timestamped claims.
+- [Source audit](docs/source-audit.md): original theorem assumptions, an unposted correction draft, and existing formalization projects.
+- [Verification record](docs/verification.md): finite counterexample, proof status, and limitations.
+- [Lean model](AIMoral/ExcludedStakeholder.lean): explicit separation of strategic properties from a chosen outsider-protection constraint.
+- [Bibliography](references.bib): importable into Zotero, with source-role notes.
+
+The model is a four-profile coordination game with an excluded stakeholder. It
+is a foundational counterexample, not a new program-equilibrium result. See the
+verification record for the latest checked status.
+
+**Verified:** ten Lean theorems compile; Lean reports no axiom dependencies for
+each. Nine finite-table checks and seven contrast tests pass. The bibliography
+contains eleven source records. [CI evidence](https://github.com/Sodelin/AI-Moral-Formalization/actions/runs/34435110926).
+
+To reproduce with the pinned Lean toolchain and Python 3.10 or newer:
+
+```sh
+lake build --wfail
+lake env lean scripts/Audit.lean
+python3 scripts/check_game.py
+python3 -m unittest discover -s tests -v
+```

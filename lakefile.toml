@@ -1,0 +1,6 @@
+name = "ai_moral_formalization"
+version = "0.1.0"
+defaultTargets = ["AIMoral"]
+
+[[lean_lib]]
+name = "AIMoral"

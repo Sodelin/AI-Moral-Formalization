@@ -1,0 +1,8 @@
+.lake/
+__pycache__/
+*.pyc
+.venv/
+video-evidence/
+*.info.json
+*.vtt
+*.srt
