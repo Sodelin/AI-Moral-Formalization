@@ -187,4 +187,8 @@ This Markdown file can be copied into an Obsidian project folder. Create links t
 
 The full source SRT is a separate downloadable artifact. It is excluded from this public repository, along with transient YouTube metadata. This repository contains original analysis and code; it does not redistribute the video's transcript or claim affiliation with MAISI.
 
+Representative discovery queries were `"P6yKoqCxl_0"`, `open source game theory website AI moral formalization`, `"game theory" "formalization" "morality"`, and `AI ethics formalization Isabelle deontic logic computational ethics Benzmuller Gewirth`. Known-source retrieval then followed the MAISI → guide → game-theory page → cited papers chain. Exact-ID web search did not resolve the video; `yt-dlp` did. These queries document a rapid discovery pass, not an exhaustive, deduplicated literature-search protocol. Incidental irrelevant search results were not used as evidence.
+
+The independent code/interpretation review found agreement between the payoff tables and claims, with no blocking semantic defect. It also noted that the classification of asymmetric outcomes could change if lotteries were allowed; the repository explicitly limits its profile search to four deterministic outcomes. Neither that observation nor the checker establishes a mixed-strategy theorem.
+
 Research, writing, and implementation are AI-assisted. The user has not yet independently endorsed every interpretation or reviewed the code. A draft contribution is not an accepted external result.

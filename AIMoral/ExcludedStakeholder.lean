@@ -60,30 +60,44 @@ def StakeholderParetoEfficient (p : Profile) : Prop :=
 def NoOutsiderHarm (reference p : Profile) : Prop :=
   outsider reference ≤ outsider p
 
-theorem pact_strict_nash : StrictNash agents pact := by decide
+theorem pact_strict_nash : StrictNash agents pact := by
+  unfold StrictNash
+  decide
 
-theorem baseline_strict_nash : StrictNash agents baseline := by decide
+theorem baseline_strict_nash : StrictNash agents baseline := by
+  unfold StrictNash
+  decide
 
 theorem pact_agent_pareto_efficient : AgentParetoEfficient agents pact := by
+  unfold AgentParetoEfficient AgentParetoDominates
   intro q
   rcases q with ⟨a, b⟩
   cases a <;> cases b <;> decide
 
 theorem pact_dominates_baseline_for_agents :
-    AgentParetoDominates agents pact baseline := by decide
+    AgentParetoDominates agents pact baseline := by
+  unfold AgentParetoDominates
+  decide
 
-theorem pact_harms_outsider : ¬ NoOutsiderHarm baseline pact := by decide
+theorem pact_harms_outsider : ¬ NoOutsiderHarm baseline pact := by
+  unfold NoOutsiderHarm
+  decide
 
-theorem baseline_satisfies_chosen_rule : NoOutsiderHarm baseline baseline := by decide
+theorem baseline_satisfies_chosen_rule : NoOutsiderHarm baseline baseline := by
+  unfold NoOutsiderHarm
+  decide
 
 /-- Enlarging the vector reveals the tradeoff; it does not resolve it. -/
 theorem baseline_and_pact_stakeholder_incomparable :
     ¬ StakeholderParetoDominates pact baseline ∧
-    ¬ StakeholderParetoDominates baseline pact := by decide
+    ¬ StakeholderParetoDominates baseline pact := by
+  unfold StakeholderParetoDominates
+  decide
 
 /-- Even all-stakeholder Pareto efficiency does not enforce the no-harm rule. -/
 theorem pact_still_stakeholder_pareto_efficient :
     StakeholderParetoEfficient pact := by
+  unfold StakeholderParetoEfficient StakeholderParetoDominates
   intro q
   rcases q with ⟨a, b⟩
   cases a <;> cases b <;> decide
@@ -98,6 +112,7 @@ theorem cooperation_properties_do_not_entail_no_harm :
 /-- This finite game has a safe baseline equilibrium, but the rule is additional. -/
 theorem chosen_rule_selects_baseline (p : Profile) :
     NoOutsiderHarm baseline p ↔ p = baseline := by
+  unfold NoOutsiderHarm
   rcases p with ⟨a, b⟩
   cases a <;> cases b <;> decide
 
