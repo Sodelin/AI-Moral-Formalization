@@ -20,7 +20,7 @@ Five findings drive the decision:
 4. An actionable source-audit candidate concerns the growth condition in the guide's bounded Löb statement. The original theorem includes proof-encoding overhead and a stronger asymptotic relation. The [audit](source-audit.md) records the exact qualification; no external correction has been submitted.
 5. The first implementation constructs a two-agent game with an excluded stakeholder. Stable, mutually beneficial coordination can violate a separately specified no-harm constraint. This is a modest formal example of a familiar conceptual limitation, with no novelty claim. See [verification status](verification.md).
 
-**Evidence bands:** high confidence in the retrieved caption provenance, the identified links, and directly inspected source statements; model-internal confidence depends on the recorded checker results; low confidence in transfer to deployed AI because there is no empirical evaluation. These are descriptive bands, not a clinical GRADE assessment. No pooled effect size is appropriate.
+**Evidence bands:** high confidence in the retrieved caption provenance, the identified links, and directly inspected source statements. The ten local theorems are now checked by Lean with no axiom dependencies reported; nine finite checks and seven contrast tests also pass. Confidence in transfer to deployed AI remains low because there is no empirical evaluation. These are descriptive bands, not a clinical GRADE assessment. No pooled effect size is appropriate.
 
 **Next actions:** review the meaning of the first model; inspect the source-assumption note; then choose one external contribution target and prepare a narrow patch conforming to its existing definitions and review policy. The independent checks matter more than the number of generated theorems.
 
@@ -152,7 +152,7 @@ The machine-readable bibliography is [references.bib](../references.bib). It inc
 
 ## 11. Metacognitive review: process integrity
 
-**Assessment: a useful rapid map, with incomplete coverage.** A transparent, task-specific process score is 7/10: provenance 2/2; source-to-claim traceability 2/2; breadth/counterevidence 1/2; reproducibility 1/2; independent semantic review 1/2. This is an informal rubric, not AMSTAR-2, and it does not score mathematical truth.
+**Assessment: a useful rapid map, with incomplete coverage.** A transparent, task-specific process score is 8/10: provenance 2/2; source-to-claim traceability 2/2; breadth/counterevidence 1/2; reproducibility 2/2; independent semantic review 1/2. This is an informal rubric, not AMSTAR-2, and it does not score mathematical truth. Reproducibility credit reflects the observed Lean and Python CI checks; the lack of external human semantic review remains a limitation.
 
 Strengths include obtaining the requested source track, following the actual link chain, recording uncertainty about automatic captions, and checking the guide against its cited paper. Weaknesses include selective searches, no independent screening, no audio verification, and no outside expert review. Some philosophical sources were examined only at abstract level. Agents working on separate subtasks offer additional checking, but do not constitute independent human replication.
 

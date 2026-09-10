@@ -1,7 +1,12 @@
 # Verification record: excluded-stakeholder counterexample
 
-Recorded 2026-09-10. **Python finite checks passed; Lean source is a candidate
-pending a successful build on an ordinary Lean runtime or GitHub CI.**
+Recorded 2026-09-10. **All ten Lean theorems compile successfully; all nine
+Python finite checks and seven contrast tests pass locally and in GitHub CI.**
+
+Verified code revision: [`d0914af6985f33820ea52ab42f2951a3f138788e`](https://github.com/Sodelin/AI-Moral-Formalization/commit/d0914af6985f33820ea52ab42f2951a3f138788e).
+Evidence: [successful push workflow](https://github.com/Sodelin/AI-Moral-Formalization/actions/runs/34435110926)
+and [successful PR workflow](https://github.com/Sodelin/AI-Moral-Formalization/actions/runs/34435113321).
+The later documentation update does not change the verified Lean, Python, or workflow files.
 
 ## Claim and assumptions
 
@@ -55,8 +60,9 @@ profiles, irreflexive Pareto dominance, a tied deviation that invalidates strict
 Nash, changing only outsider payoffs while keeping agent equilibrium properties
 fixed, and changing the declared no-harm reference.
 
-These checks exhaust the four listed profiles. They do not replace checking the
-Lean file, and agreement has not been promoted to a machine-checked theorem.
+These checks exhaust the four listed profiles. They are separate from the
+successful Lean proof check; no automatic equivalence proof connects the two
+implementations.
 
 ## Lean status and reproducibility
 
@@ -67,13 +73,22 @@ no third-party Lean package dependencies; the file imports `Std`.
 Reproduction command with this toolchain installed:
 
 ```sh
-lake build
+lake build --wfail
+lake env lean scripts/Audit.lean
 ```
 
-The intended Lean claims use ordinary `decide`, case analysis, and implication
+The checked Lean claims use ordinary `decide`, case analysis, and implication
 elimination. There are no `sorry`, `admit`, added axioms, or `native_decide` calls.
-Their presence as source text does not establish successful elaboration or proof
-checking. A green CI build is the next verification gate.
+The workflow successfully built both `AIMoral.ExcludedStakeholder` and `AIMoral`
+using Lean 4.19.0 with warnings treated as errors. `scripts/Audit.lean` prints
+the dependencies of all ten theorems; each reports that it does not depend on any
+axioms. This is Lean's own dependency report, not a separately implemented kernel
+audit. The optional external axiom-audit action was not run.
+
+Initial CI setup exposed a missing manifest and a package-name encoding issue.
+The first compiler pass then required explicit unfolding of custom predicates
+before their finite decision procedures could be synthesized. These were fixed
+without changing the payoff table, mathematical definitions, or theorem statements.
 
 Local attempt downloaded the official Lean 4.19.0 Linux release. The compiler
 failed during runtime startup, before reading project code:
@@ -90,7 +105,8 @@ Official runtime source performs application-location lookup through
 `/proc/<pid>/exe`; this environment does not resolve that lookup for Lean.
 Explicit installation-path settings did not resolve startup. A diagnostic
 tracing attempt was also unavailable (`PTRACE_TRACEME: Operation not permitted`).
-No runtime restrictions were bypassed, and no compiler success is claimed here.
+No runtime restrictions were bypassed. The independent GitHub-hosted runtime
+subsequently completed the successful proof check recorded above.
 
 Official provenance: [Lean 4.19.0 release](https://github.com/leanprover/lean4/releases/tag/v4.19.0)
 and [Lean 4.19.0 application-path implementation](https://github.com/leanprover/lean4/blob/v4.19.0/src/runtime/io.cpp).
@@ -99,7 +115,7 @@ and [Lean 4.19.0 application-path implementation](https://github.com/leanprover/
 
 **Process integrity:** the chosen table, baseline, formal predicates, executable
 checker, and contrast tests are explicit. The Python result is reproducible.
-Lean verification remains incomplete until CI is observed to pass. Source and
+Lean verification has now been observed to pass on the cited revision. Source and
 Python use parallel definitions; no automatic cross-language equivalence proof
 is supplied.
 

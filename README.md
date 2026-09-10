@@ -45,6 +45,10 @@ The model is a four-profile coordination game with an excluded stakeholder. It
 is a foundational counterexample, not a new program-equilibrium result. See the
 verification record for the latest checked status.
 
+**Verified:** ten Lean theorems compile; Lean reports no axiom dependencies for
+each. Nine finite-table checks and seven contrast tests pass. The bibliography
+contains eleven source records. [CI evidence](https://github.com/Sodelin/AI-Moral-Formalization/actions/runs/34435110926).
+
 To reproduce with the pinned Lean toolchain and Python 3.10 or newer:
 
 ```sh

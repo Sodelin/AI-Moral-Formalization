@@ -62,7 +62,7 @@ No upstream issue, comment, pull request, or message was sent in this audit.
 
 **Proposed research unit:** cooperation can improve both modeled players' payoffs while reducing an affected non-player's welfare. This is a foundational counterexample and interpretation test, not a claim of new mathematical discovery.
 
-A useful finite coordination model has two players who can join a pact or abstain, plus a stakeholder who cannot act. The local candidate module `AIMoral/ExcludedStakeholder.lean` assigns both-join payoff `(3,3,-2)`, first-only payoff `(0,2,-1)`, second-only payoff `(2,0,-1)`, and both-abstain payoff `(1,1,0)`. Relative to abstention, the pact improves each player's payoff by 2 while the outsider loses 2. Comparing the outsider against its own baseline avoids assuming that the three welfare coordinates share an interpersonal scale.
+A useful finite coordination model has two players who can join a pact or abstain, plus a stakeholder who cannot act. The local module `AIMoral/ExcludedStakeholder.lean` assigns both-join payoff `(3,3,-2)`, first-only payoff `(0,2,-1)`, second-only payoff `(2,0,-1)`, and both-abstain payoff `(1,1,0)`. Relative to abstention, the pact improves each player's payoff by 2 while the outsider loses 2. Comparing the outsider against its own baseline avoids assuming that the three welfare coordinates share an interpersonal scale.
 
 Prove separately:
 
@@ -76,9 +76,9 @@ Nolan's psychology contribution can concentrate on whether the formal predicates
 
 ## 11. Process-integrity assessment
 
-**Verdict: adequate for choosing an initial project; incomplete for systematic coverage.** This is a targeted source audit, not a registered systematic review. Search followed the website to original papers and inspected candidate repository metadata directly. The bounded Löb discrepancy was checked at the theorem and definition level. Other paper coverage is principally abstract-level. Repository builds, comprehensive code search, and exhaustive novelty checks were not performed. A numeric AMSTAR-2 or RoB-2 score would be inappropriate for this mixed mathematical/software source set.
+**Verdict: adequate for choosing an initial project; incomplete for systematic coverage.** This is a targeted source audit, not a registered systematic review. Search followed the website to original papers and inspected candidate repository metadata directly. The bounded Löb discrepancy was checked at the theorem and definition level. Other paper coverage is principally abstract-level. External repository builds, comprehensive code search, and exhaustive novelty checks were not performed. A numeric AMSTAR-2 or RoB-2 score would be inappropriate for this mixed mathematical/software source set.
 
-The main corrective actions are to preserve the video's verified source mapping, reproduce selected dependencies at immutable pins, and review exact theorem-to-model correspondence before making upstream claims.
+The main corrective actions are to preserve the video's verified source mapping, reproduce selected external dependencies at immutable pins, and review exact theorem-to-model correspondence before making upstream claims. The separate local starter has now passed CI, as recorded in [verification.md](verification.md); the external repositories have not been built here.
 
 ## 12. Inference-robustness assessment
 
